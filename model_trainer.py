@@ -49,13 +49,16 @@ class ModelTrainer:
 
         # Medir el tiempo de entrenamiento
         start_time = time.time()
-        self.model.fit(X_train, y_train)
-        end_time = time.time()
+        try:
+            self.model.fit(X_train, y_train)
+            end_time = time.time()
+            training_time = end_time - start_time
+            print(f"Tiempo de entrenamiento: {training_time:.2f} segundos.")
+            return self.model, training_time
+        except Exception as e:
+            print(f"Error durante el entrenamiento de {self.model.__class__.__name__}: {e}")
+            return None, 0.0
 
-        training_time = end_time - start_time
-        print(f"Tiempo de entrenamiento: {training_time:.2f} segundos.")
-
-        return self.model, training_time
 
     def save_model(self, file_path="student_absenteeism_model.pkl"):
         """

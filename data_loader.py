@@ -15,7 +15,7 @@ class DataLoader:
             file_path (str): La ruta al archivo .csv.
         """
         if not os.path.exists(file_path):
-            raise FileNotFoundError("FIle not found. Asegurate que sea el csv y la ruta correcta")
+            raise FileNotFoundError("Archivo no encontrado. Asegúrate de que la ruta al archivo .csv sea correcta.")
         self.file_path = file_path
 
     def load_data(self):
